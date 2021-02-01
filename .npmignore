@@ -1,0 +1,8 @@
+/src/
+/node_modules
+/__node_modules__/
+/sandbox/
+/build/sandbox/
+/bin/
+/.idea/
+/myusers.js
