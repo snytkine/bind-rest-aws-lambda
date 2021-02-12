@@ -1,0 +1,35 @@
+{
+  "compileOnSave": true,
+  "compilerOptions": {
+    "target": "es2020",
+    "module": "commonjs",
+    "lib": [ "es2017", "es2016.array.include"],
+    "outDir": "build",
+    "sourceMap": true,
+    "removeComments": true,
+    "declaration": true,
+    "strict":false,
+    "declarationDir": "build/types",
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitAny": false,
+    "noImplicitThis": true,
+    "alwaysStrict": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "baseUrl": ".", // This must be specified if "paths" is.
+    "paths": {
+      "bind-rest": ["node_modules/bind-rest"] // This mapping is relative to "baseUrl"
+    }
+  },
+  "include":["src/"],
+  "exclude":[
+    "node_modules",
+    "build",
+    "sandbox",
+    "*.js",
+    "**/__tests__/**"
+  ]
+}

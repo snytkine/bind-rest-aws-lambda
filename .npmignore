@@ -3,6 +3,6 @@
 /__node_modules__/
 /sandbox/
 /build/sandbox/
+/build/.idea/
 /bin/
-/.idea/
-/myusers.js
+/.idea
