@@ -1,6 +1,5 @@
-// @ts-ignore
 /**
- * convert multiValueQuery and convert into query string
+ * convert multiValueQuery into query string
  * @param multivalueQuery
  */
 const multiValueQueryStringParameters = (multivalueQuery?: NodeJS.Dict<string[]>): string => {

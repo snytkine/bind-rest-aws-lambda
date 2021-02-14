@@ -8,15 +8,21 @@ import createRequest from 'serverless-http/lib/provider/aws/create-request';
 
 import { ParsedUrlQuery } from 'querystring';
 
+const debug = require('debug')('bind:rest:aws:lambda');
+const TAG = 'AwsLambdaContext';
 // import { IAWSGatewayEvent } from '../interfaces';
 import { multiValueQueryStringParameters, normalizeMultiValues } from '../lib';
 
 export default class AwsLambdaContext extends BindRestContext {
+
   constructor(
     public readonly apiGatewayEvent: APIGatewayEvent,
     public readonly lambdaContext: LambdaContext,
+    public readonly isColdStart: boolean = false
   ) {
     super();
+    debug('entered AwsLambdaContext constructor')
+    this.contextType = 'AwsLambdaContext';
   }
 
   protected normalizedHeaders: http.IncomingHttpHeaders;
@@ -38,7 +44,10 @@ export default class AwsLambdaContext extends BindRestContext {
   }
 
   get requestMethod(): HTTPMethod {
-    return this.apiGatewayEvent.httpMethod as HTTPMethod;
+    debug('%s entered requestMethod getter', TAG)
+    const ret = this.apiGatewayEvent.httpMethod as HTTPMethod;
+    debug('%s returning from requestMethod ret=%s', TAG, ret);
+    return ret;
   }
 
   get req(): http.IncomingMessage {

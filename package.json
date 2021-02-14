@@ -5,7 +5,7 @@
   "main": "./build/index.js",
   "typings": "build/types/index.d.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "cross-env NODE_ENV=TEST jest",
     "prebuild": "node ./node-build-os.js clean",
     "build": "tsc --pretty",
     "prettier": "prettier --config ./.prettierrc --write ./src/**/*.ts",
@@ -18,7 +18,7 @@
   "devDependencies": {
     "@types/aws-lambda": "^8.10.71",
     "@types/debug": "^4.1.5",
-    "@types/jest": "^25.2.1",
+    "@types/jest": "^25.2.3",
     "@types/node": "^14.14.22",
     "@typescript-eslint/eslint-plugin": "^4.13.0",
     "@typescript-eslint/parser": "^4.13.0",
@@ -29,10 +29,10 @@
     "eslint-config-prettier": "^6.10.1",
     "eslint-plugin-import": "^2.20.2",
     "eslint-plugin-prettier": "^3.1.2",
-    "jest": "^25.2.7",
+    "jest": "^25.5.4",
     "pre-commit": "^1.2.2",
     "prettier": "^2.0.2",
-    "ts-jest": "^25.3.1",
+    "ts-jest": "^25.5.1",
     "typescript": "^4.1.3"
   },
   "peerDependencies": {

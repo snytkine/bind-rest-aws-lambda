@@ -17,7 +17,7 @@
     "noImplicitAny": false,
     "noImplicitThis": true,
     "alwaysStrict": true,
-    "skipLibCheck": true,
+    "skipLibCheck": false,
     "esModuleInterop": true,
     "baseUrl": ".", // This must be specified if "paths" is.
     "paths": {
