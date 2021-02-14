@@ -1,4 +1,4 @@
-import {IResponseHeaders} from "bind-rest";
+import { IResponseHeaders } from 'bind-rest';
 
 /**
  * @todo to avoid having to call this function
@@ -11,18 +11,17 @@ import {IResponseHeaders} from "bind-rest";
  * @param headers
  */
 const flattenMultiValueHeaders = (headers: IResponseHeaders): NodeJS.Dict<string> => {
-
   const entries = Object.entries(headers);
 
   return entries.reduce((acc, next) => {
     if (Array.isArray(next[1])) {
-      acc[next[0]] = '' + next[1].join(',')
+      acc[next[0]] = `${next[1].join(',')}`;
     } else {
-      acc[next[0]] = '' + next[1];
+      acc[next[0]] = `${next[1]}`;
     }
 
     return acc;
-  }, {})
+  }, {});
 };
 
 export default flattenMultiValueHeaders;

@@ -10,7 +10,8 @@
   "parserOptions": {
     "ecmaVersion": 2016,
     "parser": "@typescript-eslint/parser",
-    "project": "./tsconfig.json"
+    "project": "./tsconfig.json",
+    "createDefaultProgram": true
   },
   "parser": "@typescript-eslint/parser",
   "rules": {
