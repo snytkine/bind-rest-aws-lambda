@@ -9,14 +9,12 @@ const multiValueQueryStringParameters = (multivalueQuery?: NodeJS.Dict<string[]>
 
   const entries = Object.entries(multivalueQuery);
 
-  const ret = entries.reduce((acc, next) => {
+  return entries.map(next => {
     const key = next[0];
     const val = next[1].join(`&${key}=`);
 
-    return `${acc}&${key}=${val}`;
-  }, '');
-
-  return ret;
+    return `${key}=${val}`;
+  }).join('&');
 };
 
 export default multiValueQueryStringParameters;
