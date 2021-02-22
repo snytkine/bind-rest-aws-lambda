@@ -1,7 +1,7 @@
 {
   "name": "bind-rest-aws-lambda",
   "version": "1.0.1",
-  "description": "Module to enable applicate build with bind-rest framework to run in AWS Lambda",
+  "description": "Module to enable applications build with bind-rest framework to run in AWS Lambda",
   "main": "./build/index.js",
   "typings": "build/types/index.d.ts",
   "files": [
