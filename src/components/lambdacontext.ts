@@ -1,4 +1,3 @@
-// eslint-disable-next-line max-classes-per-file
 import { APIGatewayEvent, Context as LambdaContext } from 'aws-lambda';
 import { BindRestContext } from 'bind-rest';
 import http from 'http';
@@ -7,7 +6,6 @@ import HTTPMethod from 'http-method-enum';
 import createRequest from 'serverless-http/lib/provider/aws/create-request';
 
 import { ParsedUrlQuery } from 'querystring';
-// import { IAWSGatewayEvent } from '../interfaces';
 import { multiValueQueryStringParameters, normalizeMultiValues } from '../lib';
 
 const debug = require('debug')('bind:rest:aws:lambda');
@@ -23,6 +21,7 @@ export default class AwsLambdaContext extends BindRestContext {
     super();
     debug('entered AwsLambdaContext constructor');
     this.contextType = 'AwsLambdaContext';
+    debug('%s Constructed isColdStart=%s', TAG, isColdStart);
   }
 
   protected normalizedHeaders: http.IncomingHttpHeaders;
@@ -30,7 +29,7 @@ export default class AwsLambdaContext extends BindRestContext {
   protected eventQueryString: string;
 
   /**
-   * @todo maybe need to normalize headers in case of multi-value headers?
+   * need to normalize headers in case of multi-value headers?
    */
   get requestHeaders(): http.IncomingHttpHeaders {
     if (!this.normalizedHeaders) {
@@ -68,11 +67,11 @@ export default class AwsLambdaContext extends BindRestContext {
    */
   get requestUrl() {
     const qs = this.querystring;
-    return qs ? `${this.path}&${qs}` : this.path;
+    return qs ? `${this.path}?${qs}` : this.path;
   }
 
   get querystring(): string {
-    if (!this.eventQueryString) {
+    if (this.eventQueryString === undefined) {
       this.eventQueryString = multiValueQueryStringParameters(
         this.apiGatewayEvent.multiValueQueryStringParameters,
       );

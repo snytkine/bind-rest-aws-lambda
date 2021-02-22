@@ -8,7 +8,7 @@
     "test": "cross-env NODE_ENV=TEST jest",
     "prebuild": "node ./node-build-os.js clean",
     "build": "tsc --pretty",
-    "prettier": "prettier --config ./.prettierrc --write ./src/**/*.ts",
+    "prettier": "prettier --config ./.prettierrc.js --write ./src/**/*.ts",
     "format": "eslint src --ext .ts --fix",
     "lint": "eslint src --ext .ts"
   },

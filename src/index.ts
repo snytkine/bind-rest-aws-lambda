@@ -3,3 +3,4 @@ export * from './interfaces';
 export * from './components';
 export * from './consts';
 export * from './lib';
+export * from './middleware';

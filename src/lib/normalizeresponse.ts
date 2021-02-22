@@ -1,15 +1,15 @@
-import { IAppResponse, stringifyBody } from 'bind-rest';
-import { APIGatewayProxyResult } from 'aws-lambda';
-import flattenMultiValueHeaders from './flattenmultivalueheaders';
+import { IServerResponse, stringifyBody } from 'bind-rest';
+import { APIGatewayProxyStructuredResultV2 } from 'aws-lambda';
 
 const createNormalizeResponse = (maxBodySize?: number) => (
-  response: IAppResponse,
-): Promise<APIGatewayProxyResult> => {
-  return stringifyBody(maxBodySize)(response).then((responseWithBody) => {
+  response: IServerResponse,
+): Promise<APIGatewayProxyStructuredResultV2> => {
+  return stringifyBody(maxBodySize)(response).then((responseWithBody: any) => {
     return {
       statusCode: responseWithBody.statusCode,
-      headers: flattenMultiValueHeaders(responseWithBody.headers),
+      headers: response.headers,
       body: responseWithBody.body,
+      cookies: responseWithBody.cookies,
     };
   });
 };
